@@ -60,10 +60,8 @@ def flattenArr(arr):
 
 
 def main():
-    # str = input("Enter String To Be Hidden: ")
-    string = "bruh moment"
-    # location = input("Enter file location: ")
-    location = "./sample.jpg"
+    str = input("Enter String To Be Hidden: ")
+    location = input("Enter file location: ")
 
     img, width, height = loadImage(location)
 
