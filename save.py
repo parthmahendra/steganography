@@ -89,7 +89,7 @@ def main():
     outputarray = flattenArr(outputarray)
     output = Image.new("RGB", (width, height))
     output.putdata(outputarray)
-    output.save("hidden.jpeg")
+    output.save("hidden.jpg")
 
 
 main()
