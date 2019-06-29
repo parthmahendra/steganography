@@ -1,3 +1,12 @@
+from PIL import Image
+
+
+def loadImage(location):
+    img = Image.open(location).convert("RGB")
+    x, y = img.size
+    return img, x, y
+
+
 def binary(i):
     n = 0
     binarr = []
@@ -18,3 +27,12 @@ def denary(string):
     for b in range(len(string) - 1, -1, -1):
         t += int(string[b]) * (2 ** b)
     return t
+
+
+def main():
+    location = input("Enter file location: ")
+    length = input("Enter length of hidden text: ")
+    img, width, height = loadImage(location)
+
+
+main()
