@@ -31,8 +31,19 @@ def denary(string):
 
 def main():
     location = input("Enter file location: ")
-    length = input("Enter length of hidden text: ")
+    length = input("Enter number of characters of hidden text: ")
     img, width, height = loadImage(location)
+    bitarray = []
+    t = 0
+    for y in range(height):
+        for x in range(width):
+            if t < length*8:
+                r,g,b = img.getpixel((x,y))
+                br = binary(r)
+                bitarray.append(list(br)[-1])
+            t+=1
+
+
 
 
 main()
