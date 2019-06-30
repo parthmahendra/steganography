@@ -26,10 +26,10 @@ def binary(i):
 
 
 def denary(string):
-    string = string.strip("0")
+    string = string.lstrip("0")
     t = 0
     for b in range(len(string) - 1, -1, -1):
-        t += int(string[b]) * (2 ** b)
+        t += int(string[len(string) - 1 - b]) * (2 ** b)
     return t
 
 
@@ -61,13 +61,11 @@ def flattenArr(arr):
 def main():
     string = input("Enter String To Be Hidden: ")
     location = input("Enter file location: ")
-
     img, width, height = loadImage(location)
 
     arr = []
     for c in string:
         arr.append(binary(ord(c)))
-
     arr = standardiseLength(arr, "0", 8)
     arr = combineBits(arr)
     outputarray = declareArray(height, width, True)
