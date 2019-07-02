@@ -32,12 +32,13 @@ def denary(string):
 def main():
     location = input("Enter file location: ")
     length = int(input("Enter number of characters of hidden text: "))
+    snpixel = int(input("Enter Starting Point of Pixel: "))
     img, width, height = loadImage(location)
     bitarray = []
     t = 0
     for y in range(height):
         for x in range(width):
-            if t < length * 8:
+            if (t < length * 8) and (snpixel<=t):
                 r, g, b = img.getpixel((x, y))
                 br = binary(r)
                 bitarray.append(list(br)[-1])
