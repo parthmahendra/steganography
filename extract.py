@@ -22,28 +22,41 @@ def binary(i):
 
 
 def denary(string):
-    string = string.strip("0")
+    string = string.lstrip("0")
     t = 0
     for b in range(len(string) - 1, -1, -1):
-        t += int(string[b]) * (2 ** b)
+        t += int(string[len(string) - 1 - b]) * (2 ** b)
     return t
 
 
 def main():
     location = input("Enter file location: ")
-    length = input("Enter number of characters of hidden text: ")
+    length = int(input("Enter number of characters of hidden text: "))
     img, width, height = loadImage(location)
     bitarray = []
     t = 0
     for y in range(height):
         for x in range(width):
-            if t < length*8:
-                r,g,b = img.getpixel((x,y))
+            if t < length * 8:
+                r, g, b = img.getpixel((x, y))
                 br = binary(r)
                 bitarray.append(list(br)[-1])
-            t+=1
+            t += 1
 
 
+    t = 0
+    binaryarr = []
+    for i in range(0, len(bitarray), 8):
+        s = ""
+        for t in range(8):
+            s += bitarray[i + t]
+        binaryarr.append(s)
+
+    s = ""
+    for b in range(len(binaryarr)):
+        binaryarr[b] = chr(denary(binaryarr[b]))
+        s += binaryarr[b]
+    print(s)
 
 
 main()
