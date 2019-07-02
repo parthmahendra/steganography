@@ -1,5 +1,5 @@
 from PIL import Image
-
+import numpy as np
 
 def declareArray(h, w, integer):
     arr = []
@@ -79,14 +79,12 @@ def main():
                 br = list(br)
                 br[-1] = arr[t]
                 br = "".join(br)
-                r = int(denary(br))
+                r = denary(br)
             outputarray[y][x] = (r, g, b)
             t += 1
 
-    outputarray = flattenArr(outputarray)
-    output = Image.new("RGB", (width, height))
-    output.putdata(outputarray)
-    output.save("hidden.jpg")
-
+    outputarray = np.array(outputarray).reshape(height,width,3)
+    im = Image.fromarray(outputarray.astype('uint8'))
+    im.convert('RGB').save('output.png', 'PNG')
 
 main()
