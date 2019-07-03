@@ -23,6 +23,9 @@ In the end, you are left with an image which can have the last bits extracted af
 
 # Accessing Hidden Example PNG
 Enter File Location: output.png
+
 Enter number of characters of hidden text: 21
+
 Enter Starting Point of Pixels: 348
+
 Steganography is cool
