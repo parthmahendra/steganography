@@ -38,16 +38,15 @@ def main():
     t = 0
     for y in range(height):
         for x in range(width):
-            if (t < length * 8) and (snpixel<=t):
+            if (t <= (length * 8) + snpixel - 1):
                 r, g, b = img.getpixel((x, y))
                 br = binary(r)
                 bitarray.append(list(br)[-1])
             t += 1
 
-
     t = 0
     binaryarr = []
-    for i in range(0, len(bitarray), 8):
+    for i in range(snpixel, len(bitarray), 8):
         s = ""
         for t in range(8):
             s += bitarray[i + t]
