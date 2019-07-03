@@ -61,6 +61,7 @@ def flattenArr(arr):
 def main():
     string = input("Enter String To Be Hidden: ")
     location = input("Enter file location: ")
+    startpoint = int(input("Enter starting pixel number: "))
     img, width, height = loadImage(location)
 
     arr = []
@@ -74,10 +75,10 @@ def main():
     for y in range(0, height):
         for x in range(0, width):
             r, g, b = img.getpixel((x, y))
-            if t < len(arr):
+            if t < (len(arr)+startpoint) and startpoint <= t:
                 br = binary(r)
                 br = list(br)
-                br[-1] = arr[t]
+                br[-1] = arr[t - startpoint]
                 br = "".join(br)
                 r = denary(br)
             outputarray[y][x] = (r, g, b)
