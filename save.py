@@ -87,5 +87,6 @@ def main():
     outputarray = np.array(outputarray).reshape(height,width,3)
     im = Image.fromarray(outputarray.astype('uint8'))
     im.convert('RGB').save('output.png', 'PNG')
+    print("Your Saved Text Length is: " + str(len(string)))
 
 main()
