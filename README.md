@@ -19,6 +19,13 @@ The program then saves the output array as another image which looks almost the 
 In the end, you are left with an image which can have the last bits extracted after a following starting point and every 8 bits would form an ASCII code that can be converted back into the original characters. To make the data harder to read back, the length the ASCII codes are standardised too can be varied to random amounts, though this would mean the maximum amount of text storable is decreased if you increase the standardised length.
 
 
+Original image:
+
+![alt text](./sample.jpg "Original image")
+
+Image with hidden text:
+
+![alt text](./output.png "Program output")
 
 
 # Accessing Hidden Example PNG
