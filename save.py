@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 
+
 def declareArray(h, w, integer):
     arr = []
     char = 0 if integer else ""
@@ -14,6 +15,8 @@ def declareArray(h, w, integer):
 def binary(i):
     n = 0
     binarr = []
+    if i == 0:
+        return ["0"]
     while 2 ** n <= i:
         n += 1
     for x in range(n - 1, -1, -1):
@@ -61,8 +64,10 @@ def flattenArr(arr):
 def main():
     string = input("Enter String To Be Hidden: ")
     location = input("Enter file location: ")
+    vernam_location = input("Enter file location of one-time pad image: ")
     startpoint = int(input("Enter starting pixel number: "))
     img, width, height = loadImage(location)
+    vernam, vwidth, vheight = loadImage(vernam_location)
 
     arr = []
     for c in string:
@@ -75,18 +80,22 @@ def main():
     for y in range(0, height):
         for x in range(0, width):
             r, g, b = img.getpixel((x, y))
-            if t < (len(arr)+startpoint) and startpoint <= t:
+            vr, vg, vb = vernam.getpixel((x, y))
+            if t < (len(arr) + startpoint) and startpoint <= t:
                 br = binary(r)
+                bvb = binary(vb)
                 br = list(br)
-                br[-1] = arr[t - startpoint]
+                bvb = list(bvb)
+                br[-1] = str((int(arr[t - startpoint]) ^ int(bvb[-1])))
                 br = "".join(br)
                 r = denary(br)
             outputarray[y][x] = (r, g, b)
             t += 1
 
-    outputarray = np.array(outputarray).reshape(height,width,3)
+    outputarray = np.array(outputarray).reshape(height, width, 3)
     im = Image.fromarray(outputarray.astype('uint8'))
     im.convert('RGB').save('output.png', 'PNG')
     print("Your Saved Text Length is: " + str(len(string)))
+
 
 main()
