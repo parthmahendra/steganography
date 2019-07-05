@@ -2,13 +2,16 @@
 ### save.py
 1. Enter string that you want to hide in the image
 2. Input location of the image in which you want to hide the text
-3. Input the pixel at which you want the bit encoding to start
+3. Enter the location of the one time pad you want to use to encrypt the text
+4. Input the pixel at which you want the bit encoding to start
+5. The program will save a file with the hidden text
 
 ### extract.py
 1. Enter location of the image with hidden text
 2. Input length of the hidden text that was entered into the image
-3. Input the number of the pixel at which the encoding starts
-4. The program will output the text
+3. Enter the location of the one time image that is used to decrypt the text
+4. Input the number of the pixel at which the encoding starts
+5. The program will output the text
 
 
 # How it works
@@ -32,6 +35,8 @@ Image with hidden text:
 Enter File Location: output.png
 
 Enter number of characters of hidden text: 21
+
+Enter file location of one-time pad image: vernam.jpg
 
 Enter Starting Point of Pixels: 348
 
