@@ -21,6 +21,9 @@ The program then saves the output array as another image which looks almost the 
 
 In the end, you are left with an image which can have the last bits extracted after a following starting point and every 8 bits would form an ASCII code that can be converted back into the original characters. To make the data harder to read back, the length the ASCII codes are standardised too can be varied to random amounts, though this would mean the maximum amount of text storable is decreased if you increase the standardised length.
 
+However if you used a one-time pad image, you can encrypt the series of bits with the corresponding end bits from another image. In this program, I encrypt the bits of the text you want to save by using an XOR operator with the end bits of the binary blue channel brightness of the same pixel coordinates in the image as the original bits are being saved in. This means that the one time pad image has to be greater or same in all dimensions being used.
+
+When decrypting, the program gets the blue channel brightness of the one time pad and XORs it with the extracted bits from the image that's being decrypted to get the original ASCII values back.
 
 Original image:
 
