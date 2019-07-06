@@ -30,6 +30,7 @@ def denary(string):
 
 
 def main():
+    usevernam = True
     location = input("Enter file location: ")
     length = int(input("Enter number of characters of hidden text: "))
     vernam_location = input("Enter file location of one-time pad image: ")
@@ -42,11 +43,15 @@ def main():
         for x in range(width):
             if (t <= (length * 8) + snpixel - 1):
                 r, g, b = img.getpixel((x, y))
-                vr, vg, vb = vernam.getpixel((x, y))
-                bvb = binary(vb)
                 br = binary(r)
-                bvb = list(bvb)
-                bitarray.append(str(int(list(br)[-1]) ^ int(bvb[-1])) )
+                if usevernam:
+                    vr, vg, vb = vernam.getpixel((x, y))
+                    bvb = binary(vb)
+                    bvb = list(bvb)
+                    bitarray.append(str(int(list(br)[-1]) ^ int(bvb[-1])) )
+                else:
+                    bitarray.append(list(br)[-1] )
+
             t += 1
 
     t = 0
