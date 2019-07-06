@@ -6,12 +6,16 @@
 4. Input the pixel at which you want the bit encoding to start
 5. The program will save a file with the hidden text
 
+(if vernam ciphering is not enabled then skip the steps asking for one time pad)
+
 ### extract.py
 1. Enter location of the image with hidden text
 2. Input length of the hidden text that was entered into the image
 3. Enter the location of the one time image that is used to decrypt the text
 4. Input the number of the pixel at which the encoding starts
 5. The program will output the text
+
+(if vernam ciphering is not enabled then skip the steps asking for one time pad)
 
 
 # How it works
